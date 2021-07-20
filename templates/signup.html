@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Resigtration Form</title>
+    <style>
+        .success{
+        color:red;
+        }
+
+    </style>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {% for fm in form %}
+     {{fm.label_tag}}{{fm}}{{fm.error|striptags}}<br><br>
+    {% endfor %}
+
+    <input type="submit" value="sign up">
+</form>
+{% if messages %}
+ {% for message in messages %}
+   <small {% if messages.tags %} class="{{message.tags}}"{% endif %}>
+       {{message}}
+   </small>
+ {% endfor %}
+{% endif %}
+</body>
+</html>
+
